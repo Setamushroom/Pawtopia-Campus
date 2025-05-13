@@ -1,0 +1,49 @@
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.pp1, .pp2 {
+    width: 15vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.pp1 {
+    top: 70vh;
+    left: 90vw;
+}
+
+.pp2 {
+    top: 80vh;
+    right: 10vw;
+}
+.myl{
+    width: 15vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    top: 30vh;
+    left: 10vw;
+    z-index: 1;
+    pointer-events: none;
+}
+.sz{
+    transform: rotate(30deg);
+    width: 15vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    top: 80vh;
+    left:20vw;
+    z-index: 1;
+    pointer-events: none;
+}

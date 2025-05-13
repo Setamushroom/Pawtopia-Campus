@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paw School</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #D5EDFC; /* 蓝色背景 */
+      font-family: 'passion one', sans-serif;
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+    .cylinder {
+      position: absolute;
+      right: 0;
+      top: 30%;
+      width: 100px;                /* was 500px */
+      height: 240px;               /* was 120px */
+      background-color: #FCD4A3;
+      border: 3px dashed #C93C3C;
+      border-radius: 120px 0 0 120px;/* was 60px 0 0 60px */
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+      display: flex;               /* new */
+      flex-direction: column;      /* new */
+      justify-content: center;     /* new */
+      align-items: flex-start;     /* changed from center */
+      padding: 10px;               /* new */
+      padding-left: 120px;
+      padding-top: 0px;
+      box-sizing: border-box;      /* new */
+      text-align: center;          /* new */
+      transition: width 0.3s ease; /* added */
+      overflow: hidden;            /* added */
+      overflow-x: hidden;          /* added */
+      white-space: nowrap;         /* added */
+    }
+    .cylinder:hover {
+      width: 500px;
+    }
+    .cylinder-inner {
+      min-width: 500px;
+    }
+    .content {
+     max-width: 600px;
+     color: #43321D;
+     position: relative;
+     top: -100px; /* 向上移动 */
+     margin: 0 auto;
+}
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+     
+     
+    }
+    p {
+      font-weight: bold;
+      line-height: 1.6;
+      font-size: 1.1em;
+ 
+    }
+    .progress {
+      margin-top: 2em;
+      text-align: left;
+      color: #43321D;
+    }
+    .progress h2 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+     margin-left: 10px;
+    }
+    .progress ul {
+      list-style-type: disc;
+      padding-left: 1.5em;
+    }
+    .progress li {
+      margin-bottom: 0.5em;
+      font-size: 1em;
+    }
+    .progress-label {
+      position: absolute;
+      right: 200px;
+      top: 10%;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #43321D;
+      transition: opacity 0.3s ease;
+    }
+    .cylinder:hover + .progress-label {
+      opacity: 0;
+    }
+    /* New styles for left positioned cylinders and labels */
+    .cylinder.left {
+      left: 0;
+      right: auto;
+      border-radius: 0 120px 120px 0;
+      padding-left: 10px;
+      padding-right: 120px;
+      align-items: flex-end;
+      text-align: center;
+    }
+    .cylinder.left:hover {
+      width: 500px;
+    }
+    .progress-label.left {
+      left: 200px;
+      right: auto;
+      top: 40%;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #43321D;
+      transition: opacity 0.3s ease;
+    }
+    .cylinder.left:hover + .progress-label.left {
+      opacity: 0;
+    }
+    /* Position adjustments for the four cylinders and labels */
+    .cylinder.right.top1 {
+      right: 0;
+      top: 20%;
+    }
+    .cylinder.right.top2 {
+      right: 0;
+      top: 60%;
+    }
+    .progress-label.right.top1 {
+      right: 200px;
+      top: 30%;
+    }
+    .progress-label.right.top2 {
+      right: 200px;
+      top: 70%;
+    }
+    .cylinder.left.top1 {
+      left: 0;
+      top: 20%;
+    }
+    .cylinder.left.top2 {
+      left: 0;
+      top: 60%;
+    }
+    .progress-label.left.top1 {
+      left: 200px;
+      top: 30%;
+    }
+    .progress-label.left.top2 {
+      left: 200px;
+      top: 70%;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+    .intro-text {
+    font-size: 1.3em;
+  }
+   
+  </style>
+  <script>
+    function toggleFrame(id) {
+      const frame = document.getElementById(id);
+      frame.style.display = frame.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</head>
+<body>
+    <img src="狗子网页素材/云5.png" alt="Cloud" style="position: absolute; top: 40px; left: 90px; width: 20%; height: auto; z-index: -1; animation: float 6s ease-in-out infinite;">
+        <img src="狗子网页素材/云4.png" alt="Cloud" style="position: absolute; top: 20vw; left: 20vw; width: 20%; height: auto; z-index: -1; animation: float 6s ease-in-out infinite;">
+        <img src="狗子网页素材/云3.png" alt="Cloud" style="position: absolute; top: 30vw; left: 70vw; width: 20%; height: auto; z-index: -1; animation: float 6s ease-in-out infinite;">
+<img src="狗子网页素材/球.png" alt="Ball" style="position: absolute; top: 80vh; left: 10vw; width: 5%; height: auto; z-index: -1;">
+  <img src="狗子网页素材/球.png" alt="Cloud" style="position: absolute; top: 10vh; left: 80vw; width: 5%; height: auto; z-index: -1;">
+  <div class="cylinder right top1" style="background-color: #FDCDA4;">
+    <div class="cylinder-inner">
+      <div class="progress">
+        <h2>Progress Tracking</h2>
+        <ul>
+          <li>Weekly video reports with trainer insights</li>
+          <li>24/7 access to e-learning portal (tutorial videos)</li>
+          <li>Final "Pawject Showcase" graduation ceremony</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="progress-label right top1">Progress Tracking</div>
+
+  <div class="cylinder right top2" style="background-color: #F8B1BF;">
+    <div class="cylinder-inner">
+      <div class="progress">
+        <h2> Safety Protocols</h2>
+        <ul>
+          <li>Pre-training health & temperament assessment</li>
+          <li>CPR-certified staff on-site during sessions</li>
+          <li>Flexible rescheduling for pets in heat/illness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="progress-label right top2">Safety Protocols</div>
+
+  <div class="cylinder left top1" style="background-color: #ABDFE8;">
+    <div class="cylinder-inner" style="transform: translateX(130px) !important;">
+      <div class="progress">
+        <h2> Core Methodology</h2>
+        <ul>
+          <li>Positive Reinforcement:<br>Reward-based learning with treats &amp; toys</li>
+          <li>Stress-Free Environment:<br>Low student-trainer ratio (max 3:1)</li>
+          <li>Real-World Practice: Park socialization<br> drills &middot; Home scenario simulations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="progress-label left top1"> Core Methodology</div>
+
+  <div class="cylinder left top2" style="background-color: #FBE779;">
+    <div class="cylinder-inner" style="transform: translateX(130px) !important;">
+
+      <div class="progress">
+        <h2> Program Options</h2>
+        <ul>
+          <li>Puppy Kindergarten: Potty training &middot; <br>Bite inhibition &middot; Leash manners(4-weekcourse)</li>
+          <li>Canine Good Citizen: Prep for <br>official CGCT certification test</li>
+          <li>Agility Fun:<br>Obstacle courses &middot; Frisbee skills &middot;<br> Scent detection challenges</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="progress-label left top2"> Program Options</div>
+
+  <div class="content">
+    <h1>Paw School</h1>
+    <p class="intro-text">
+      Where potential meets pawsitive growth! Our certified trainers unlock your pet’s brilliance
+      through science-based methods tailored to their unique personality. From basic manners to
+      advanced skills, every lesson builds confidence and deepens your bond.
+    </p>
+    <div style="position: fixed; left: 50%; bottom: 150px; transform: translateX(-50%); display: inline-block; cursor: pointer;">
+      <button onclick="toggleFrame('book-frame')" style="background: none; border: none; padding: 0; cursor: pointer;">
+        <img src="狗子网页素材/button.png" alt="Book Now"
+             style="width: 180px; border: none; transition: transform 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.1)'"
+             onmouseout="this.style.transform='scale(1)'"/>
+      </button>
+    </div>
+  </div>
+</div>
+  <iframe
+    id="book-frame"
+    src="book.html"
+    style="display: none; position: fixed; top: 20vh; left: 50%; transform: translateX(-50%); width: 400px; height: 600px; border: none; z-index: 999;">
+  </iframe>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paw Beauty Salon</title>
+    <style>
+        * {
+          font-family: 'Passion One', sans-serif;
+          font-size: 30;
+        }
+
+        .take-happy-tails {
+          -webkit-text-stroke: 1px currentColor;
+          text-shadow:
+            1px 0 0 currentColor,
+            -1px 0 0 currentColor,
+            0 1px 0 currentColor,
+            0 -1px 0 currentColor;
+        }
+
+        body {
+            font-family: 'Passion One', sans-serif;
+            background-color: #fff8d8;
+            color: #3d2b1f;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            width: 48%;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        ul {
+            padding-left: 20px;
+            font-size: 22px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+        @keyframes floatCloud {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+          100% { transform: translateY(0); }
+        }
+        .cloud {
+            position: absolute;
+            top: 100px;
+            left: 900px;
+            width: 50%;
+            height: auto;
+            z-index: -1;
+            animation: floatCloud 6s ease-in-out infinite;
+        }
+        .bathtub {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 600px;
+            height: auto;
+            z-index: -1;
+        }
+        .brush {
+            position: fixed;
+            top:150px;
+            left: 100px;
+            width: 500px;
+            height: auto;
+            z-index: -1;
+            transform: rotate(150deg);
+        }
+    </style>
+    <script>
+      function toggleFrame(id) {
+        const frame = document.getElementById(id);
+        frame.style.display = frame.style.display === 'block' ? 'none' : 'block';
+      }
+    </script>
+</head>
+<body>
+    <img class="brush" src="/狗子网页素材/刷子.png" alt="Paw Beauty Salon" style="z-index: 100;"/>
+    <img class="cloud" src="/狗子网页素材/云6.png" alt="Paw Beauty Salon" style="width: 42%;" />
+    <img class="cloud" src="/狗子网页素材/云3.png" style="top: 0; left: 0; width: 25%; height: auto; position: absolute;" />
+    <img class="cloud" src="/狗子网页素材/云4.png" style="top: 700px; left: 0; width: 15%; height: auto; position: absolute;" />
+    <img class="bathtub" src="/狗子网页素材/浴缸.png" alt="Paw Beauty Salon" />
+    <h1>Paw Beauty salon</h1>
+    <div class="container">
+        <div class="section" style="position: relative; top: 150px;">
+            <h2>Paw hairstyle</h2>
+            <p><span class="bold">Where health meets haute couture!</span> Our artistic groomers craft breed-perfect trims and creative designs using stress-free techniques. Every look is tailored to enhance your pet’s natural charm while prioritizing comfort.</p>
+            <p class="bold">Signature Services</p>
+            <ul>
+                <li><span class="bold">Breed-Specific Styles:</span> Teddy bear cuts · Schnauzer beard trims · Persian cat lion trims</li>
+                <li><span class="bold">Creative Designs:</span> Paw print dye art · Ribbon accessories · Seasonal themes (Halloween bows/Christmas glitter)</li>
+                <li><span class="bold">Functional Trims:</span> Summer cooling cuts · Eye-obstruction prevention · Mats-free solutions</li>
+            </ul>
+        </div>
+        <div class="section"  style="position: relative; top: 50px; left: 120px;">
+            <h2>Paw Bath</h2>
+            <ul>
+                <li>Double-layer deep cleansing bath</li>
+                <li>Nail grinding + ear canal cleaning</li>
+                <li>Anal gland care + claw trimming</li>
+                <li>Daily cleaning/skin sensitivity care/seasonal hair loss management</li>
+            </ul>
+            <p class="bold">Additional service: Check skin condition, parasites, and foot injuries during washing and care</p>
+        </div>
+    </div>
+    <div style="position: fixed; left: 55%; bottom: 145px; transform: translateX(-50%); display: inline-block; cursor: pointer;">
+      <button onclick="toggleFrame('book-frame')" style="background: none; border: none; padding: 0; cursor: pointer;">
+        <img src="狗子网页素材/button.png" alt="Book Now"
+             style="width: 180px; border: none; transition: transform 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.1)'"
+             onmouseout="this.style.transform='scale(1)'"/>
+      </button>
+    </div>
+    <iframe
+      id="book-frame"
+      src="book.html"
+      style="display: none; position: fixed; top: 20vh; left: 65%; transform: translateX(-50%); width: 400px; height: 600px; border: none; z-index: 999;">
+    </iframe>
+</body>
+</html>

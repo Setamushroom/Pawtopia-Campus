@@ -1,0 +1,26 @@
+.xq {
+    position: absolute;
+    right: 5vw;
+    bottom: 5vh;
+    width: 30vw;
+    height: auto;
+    transform: rotate(-30deg);
+
+}
+
+.ball1 {
+    position: absolute;
+    left: 85vw;
+    bottom: 55vh;
+    width: 8vw;
+    height: auto;
+}
+
+.ball2 {
+    position: absolute;
+    left: 10vw;
+    bottom: 25vh;
+    width: 8vw;
+    height: auto;
+}
+
