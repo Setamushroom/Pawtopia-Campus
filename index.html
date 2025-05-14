@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="page1.css" />
+    <link rel="stylesheet" href="page2.css" />
+    <link rel="stylesheet" href="page3.css" />
+    <link rel="stylesheet" href="button.css" />
+    <link rel="stylesheet" href="page4.css" />
+    <link rel="stylesheet" href="page5.css" />
+    <link rel="stylesheet" href="page6.css" />
+    <link rel="stylesheet" href="page7.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script type="module" src="./ball.js"></script>
+
+    <title>七个板块页面</title>
+    <style>
+      /* 卡片样式和动画效果 */
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+            @font-face {
+        font-family: 'Passion One';
+        src: url('./fonts/PassionOne-Regular.ttf') format('truetype');
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: 'Passion One';
+        src: url('./fonts/PassionOne-Bold.ttf') format('truetype');
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: 'Passion One';
+        src: url('./fonts/PassionOne-Black.ttf') format('truetype');
+        font-weight: 900;
+      }
+    
+
+      
+      /* 页面整体样式，去除默认边距 */
+      body {
+        margin: 0;
+      }
+      /* 每个section占满整个视口高度，内容居中显示 */
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+      /* 第一屏背景颜色 */
+      .section1 {
+        background-color: #ceebb2;
+      }
+      /* 第二屏背景颜色，文字颜色为深色 */
+      .section2 {
+        background-color: #ffffff;
+      }
+      /* 第三屏背景颜色 */
+      .section3 {
+        background: #5bc0ff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      /* 第四屏背景颜色 */
+      .section4 {
+        background: #ffeda5;
+        position: relative;
+      }
+      /* 第五屏背景颜色 */
+      .section5 {
+        background: #ffffff;
+        position: relative;
+      }
+
+      .section4,
+      .section5 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      /* 第六屏背景颜色 */
+      .section6 {
+        background: #ffffff;
+      }
+
+      .card-row {
+        display: flex;
+        gap: 2vw;
+      }
+
+      /* 第七屏背景颜色 */
+      .section7 {
+        background: #ffffff;
+        position: relative;
+      }
+
+      /* 第一屏设置相对定位，方便绝对定位的云图片定位 */
+      .section1 {
+        position: relative;
+      }
+
+      .leave-worries-behind {
+        position: absolute;
+        width: 472px;
+        top: 130px;
+        left: 0;
+        font-family: 'Passion One', sans-serif;
+        color: #5ac0ff;
+        font-size: 130px;
+        text-align: center;
+        letter-spacing: 0;
+        line-height: 130px;
+        z-index: 40;
+      }
+
+      .take-happy-tails {
+        position: absolute;
+        font-family: 'Passion One', sans-serif;
+        font-size: 130px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #5bc0ff;
+        width: 472px;
+        height: 532px;
+        top: 400px;
+        right: 10vw;
+        z-index: 40;
+      }
+
+      .cans {
+        position: relative;
+        width: 100vw;
+        height: 20vw;
+      }
+
+      .can-wrapper {
+        position: absolute;
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .can-wrapper1 {
+        left: 0;
+      }
+      .can-wrapper2 {
+        left: 12vw;
+      }
+      .can-wrapper3 {
+        left: 24vw;
+      }
+
+      .can-wrapper img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        transition: filter 0.2s, transform 0.2s;
+        cursor: pointer;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+      }
+
+      .can-img1[src="狗子网页素材/黄罐头开.png"] {
+        position: absolute;
+        transform: scale(3);
+        left: 7vw;
+        top: 0vw;
+      }
+
+      .can-img2[src="狗子网页素材/蓝罐头开.png"] {
+        position: absolute;
+        transform: scale(3);
+        left: 7vw;
+        top: 0vw;
+      }
+
+      .can-img3[src="狗子网页素材/红罐头开.png"] {
+        position: absolute;
+        transform: scale(3);
+        left: 7vw;
+        top: 0vw;
+      }
+      
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  </head>
+  <body>
+    <!-- 第一页 Section 1 -->
+    <section class="section1">
+      <div class="header">
+        <div class="logo">
+          <img
+            src="https://c.animaapp.com/mahmsgtxMKU8VI/img/ellipse-3.png"
+            alt="logo"
+          />
+          <span class="title">Pawtopia<br />Campus</span>
+        </div>
+        <div class="nav-buttons">
+          <button class="menu-btn" id="menuBtn">Menu</button>
+          <button class="sign-in" onclick="toggleFrame('login-frame')">Sign in</button>
+          <button class="register" onclick="toggleFrame('register-frame')">Register</button>
+        </div>
+      </div>
+
+      <img src="狗子网页素材/云3.png" class="cloud-image" />
+      <iframe src="狗头/狗子.html" class="dog-image" style="width: 1200px; height: 1200px;left: 250px ;border: none; position: absolute; z-index: 50;"></iframe>
+      <div id="ball-sketch-container" style="position: absolute; top: 0; left: 0; z-index: 100;"></div>
+
+    <div class="leave-worries-behind" style="font-weight: 900; font-family: 'Passion One', sans-serif;">Leave<br />Worries<br />Behind</div>
+      <div class="take-happy-tails" style="font-weight: 1500 !important; font-family: 'Passion One', sans-serif; left: 1200px;">Take<br />Happy<br />Tails<br />Home</div>
+    </section>
+
+    <!-- 云2图片，浮动在第一页和第二页之间 -->
+    <img src="狗子网页素材/云2.png" class="cloud2" />
+    <img src="狗子网页素材/云2.png" class="cloud3" />
+
+    <!-- 第二页 Section 2 -->
+    <section class="section2">
+      <div class="cans" style="display: flex; align-items: center; z-index: 500 ;">
+        <iframe 
+    id="can-frame"
+    src="罐头.html" 
+    width="1600" 
+    height="900" 
+    style="border: none; z-index: 100;" 
+  
+></iframe>
+        <img src="狗子网页素材/Happy Dog.gif" class="happy-dog" />
+      </div>
+    </section>
+
+    <!-- 第三页 Section 3 -->
+    <section class="section3">
+      <iframe
+      src="/狗粮洒落/index.html"
+      style="
+        position: absolute;
+        top: 200px;
+        left: 900px;
+        width: 2000px;            /* 足够大的实际宽度 */
+        height: 1800px;           /* 足够大的实际高度 */
+        border: none;
+        z-index: 10;
+        overflow: visible;
+        transform: scale(1.5);    /* 放大 iframe 内容 */
+        transform-origin: top left;
+        pointer-events: auto;
+      ">
+    </iframe>
+    
+      <img src="狗子网页素材/云4.png" class="cloud4" />
+      <img src="狗子网页素材/云5.png" class="cloud5" />
+      <img src="狗子网页素材/云2.png" class="cloud6" />
+      <img src="狗子网页素材/云2.png" class="cloud7" />
+
+      <p class="title1">Safe Paws, Sweet Dreams!</p>
+      <p class="text1">
+        Certified caregivers provide 24/7 supervision and enrichment playgroups.
+        Climate-controlled suites with live updates—your pet’s vacation
+        becomes your peace of mind.
+      </p>
+      <button class="more-button"   onclick="window.location.href='./boarding.html'">More</button>
+    </section>
+
+    <!-- 第四页 Section 4 -->
+    <section class="section4">
+      <img src="狗子网页素材/沐浴露.png" class="myl" />
+      <img src="狗子网页素材/刷子.png" class="sz" />
+      <img src="狗子网页素材/泡泡.png" class="pp1" />
+      <img src="狗子网页素材/泡泡2.png" class="pp2" />
+
+      <p class="title1">Healthy Coats, Happy Hearts!</p>
+      <p class="text1">
+        Expert groomers use hypoallergenic care for stress-free baths and
+        breed-perfect trims. Watch them glow with spa magic and zoomie-ready
+        energy!
+      </p>
+      <button class="more-button"   onclick="window.location.href='./grooming.html'">More</button>
+    </section>
+
+    <!-- 第五页 Section 5 -->
+    <section class="section5">
+      <img src="狗子网页素材/球.png" class="ball1" />
+      <img src="狗子网页素材/球.png" class="ball2" />
+      <img src="狗子网页素材/项圈.png" class="xq" />
+
+      <p class="title1">Smart Paws, Happy Hearts!</p>
+      <p class="text1">
+        Certified trainers unlock potential through positive reinforcement.
+        Master obedience, agility, or puppy manners—with progress reports to
+        warm your heart.
+      </p>
+      <button class="more-button" onclick="window.location.href='./training.html'" >More</button>
+    </section>
+
+    <!-- 第六页 Section 6 -->
+    <section class="section6">
+  <div class="card-row">
+    <div class="card"><img src="狗子网页素材/image1.png" alt="图片1" /></div>
+    <div class="card"><img src="狗子网页素材/image2.png" alt="图片2" /></div>
+    <div class="card"><img src="狗子网页素材/image3.png" alt="图片3" /></div>
+    <div class="card"><img src="狗子网页素材/image4.png" alt="图片4" /></div>
+    <div class="card"><img src="狗子网页素材/image5.png" alt="图片5" /></div>
+  </div>
+</section>
+
+    <!-- 第七页 Section 7 -->
+    <section class="section7">
+      <img src="狗子网页素材/屁股.png" class="pg" />
+      <div style="display: flex; align-items: center; gap: 20px; position: absolute; left: 45vw; top: 25vh;">
+        <a
+          href="狗子网页素材/twitter.png"
+          target="_blank"
+          style="font-size: 40px !important; color: black !important; transition: transform 0.3s ease; display: inline-block;"
+          onmouseover="this.style.transform='scale(1.2) rotate(-10deg)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          style="font-size: 40px !important; color: black !important; transition: transform 0.3s ease; display: inline-block;"
+          onmouseover="this.style.transform='scale(1.2) rotate(-10deg)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          style="font-size: 40px !important; color: black !important; transition: transform 0.3s ease; display: inline-block;"
+          onmouseover="this.style.transform='scale(1.2) rotate(-10deg)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          style="font-size: 40px !important; color: black !important; transition: transform 0.3s ease; display: inline-block;"
+          onmouseover="this.style.transform='scale(1.2) rotate(-10deg)'"
+          onmouseout="this.style.transform='none'"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="footer-text">
+        <div class="column">
+          <h3 style="font-family: 'Passion One', sans-serif;">Pawtopia  Campus</h3>
+          <ul>
+            <li><span style="font-family: 'Passion One', sans-serif;">Blog</span></li>
+            <li><span style="font-family: 'Passion One', sans-serif;">About us</span></li>
+            <li><span style="font-family: 'Passion One', sans-serif;">Support</span></li>
+            <li><span style="font-family: 'Passion One', sans-serif;">Q&amp;A</span></li>
+            <li><span style="font-family: 'Passion One', sans-serif;">Contact Us</span></li>
+          </ul>
+        </div>
+      </div>
+      <img src="狗子网页素材/球.png" class="footer-ball" />
+    </section>
+  <iframe
+    id="login-frame"
+    src="login.html"
+    style="display: none; position: fixed; top: 20vh; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border: none; z-index: 999;"
+  ></iframe>
+  <iframe
+    id="register-frame"
+    src="register.html"
+    style="display: none; position: fixed; top: 25vh; left: 50%; transform: translateX(-50%); width: 400px; height: 600px; border: none; z-index: 999;"
+  ></iframe>
+  </body>
+  <script>
+    function toggleFrame(id) {
+      const frame = document.getElementById(id);
+      frame.style.display = frame.style.display === 'block' ? 'none' : 'block';
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const cans = document.querySelectorAll(".can-img1, .can-img2, .can-img3");
+      cans.forEach(function (can) {
+        const closedSrc = can.getAttribute("src");
+        const openSrc = can.getAttribute("data-open");
+        let isOpen = false;
+
+        can.addEventListener("click", function () {
+          can.setAttribute("src", isOpen ? closedSrc : openSrc);
+          isOpen = !isOpen;
+        });
+      });
+      // 罐头图片跳转到指定 section
+      document.getElementById('can-yellow')?.addEventListener('click', () => {
+        document.getElementById('section3')?.scrollIntoView({ behavior: 'smooth' });
+      });
+      document.getElementById('can-blue')?.addEventListener('click', () => {
+        document.getElementById('section4')?.scrollIntoView({ behavior: 'smooth' });
+      });
+      document.getElementById('can-red')?.addEventListener('click', () => {
+        document.getElementById('section5')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      const canFrame = document.getElementById("can-frame");
+      canFrame.addEventListener("load", () => {
+        const frameDoc = canFrame.contentWindow.document;
+        const yellow = frameDoc.querySelector('img[src*="黄罐头开.png"]');
+        const blue = frameDoc.querySelector('img[src*="蓝罐头开.png"]');
+        const red = frameDoc.querySelector('img[src*="红罐头开.png"]');
+
+        if (yellow) {
+          yellow.style.cursor = "pointer";
+          yellow.addEventListener("click", () => {
+            document.getElementById('section3')?.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        if (blue) {
+          blue.style.cursor = "pointer";
+          blue.addEventListener("click", () => {
+            document.getElementById('section4')?.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        if (red) {
+          red.style.cursor = "pointer";
+          red.addEventListener("click", () => {
+            document.getElementById('section5')?.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+    // 声明变量存储云图片元素
+    let cloudImg, cloud2Top, cloud2Bottom, cloud4, cloud5;
+
+    // setup函数用于初始化设置，p5.js框架自动调用
+    function setup() {
+      noCanvas(); // 不创建画布，因为我们只操作DOM元素
+      cloudImg = document.querySelector(".cloud-image"); // 获取云图片DOM元素
+      cloud2Top = document.querySelector(".cloud2");
+      cloud2Bottom = document.querySelector(".cloud3");
+      cloud4 = document.querySelector(".cloud4");
+      cloud5 = document.querySelector(".cloud5");
+    }
+
+    // draw函数用于每帧绘制，p5.js框架自动循环调用
+    function draw() {
+      let yOffset = sin(frameCount * 0.02) * 10; // 浮动范围±10像素
+      if (cloudImg) cloudImg.style.transform = `translateY(${yOffset}px)`;
+      if (cloud2Top) cloud2Top.style.transform = `translateY(${yOffset}px)`;
+      if (cloud2Bottom)
+        cloud2Bottom.style.transform = `translateY(${yOffset}px)`;
+      if (cloud4) cloud4.style.transform = `translateY(${yOffset}px)`;
+      if (cloud5) cloud5.style.transform = `translateY(${yOffset}px)`;
+    }
+
+
+    function toggleImage(container) {
+      const [defaultImg, altImg] = container.querySelectorAll('img');
+      const showingDefault = getComputedStyle(defaultImg).opacity === '1';
+      if (showingDefault) {
+        defaultImg.style.opacity = '0';
+        defaultImg.style.zIndex = '1';
+        altImg.style.opacity = '1';
+        altImg.style.zIndex = '2';
+      } else {
+        defaultImg.style.opacity = '1';
+        defaultImg.style.zIndex = '2';
+        altImg.style.opacity = '0';
+        altImg.style.zIndex = '1';
+      }
+    }
+  </script>
+
+  <script type="module">
+  import { createBallSketch } from './ball.js';
+
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    createBallSketch('ball-sketch-container');
+  });
+</script>
+</html>

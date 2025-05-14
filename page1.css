@@ -1,0 +1,132 @@
+/* 禁止整个页面横向滚动 */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* 确保图片不会撑出屏幕 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+.cloud2 {
+    width: 35vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    top: 80vh;
+    left: 0vw;
+    z-index: 1;
+    pointer-events: none; /* 不响应鼠标事件 */
+}
+
+.cloud3 {
+    width: 55vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    top: 80vh;
+    right: -10vw;
+    z-index: 1;
+    pointer-events: none; /* 不响应鼠标事件 */
+}
+
+/* 云图片样式，宽度为视口宽度的35%，绝对定位，位于第一屏的顶部左侧 */
+.cloud-image {
+    width: 35vw;
+    height: auto;
+    max-width: 90%;
+    position: absolute;
+    top: 20vh;
+    left: 0vw;
+    z-index: 1;
+    pointer-events: none; /* 不响应鼠标事件 */
+}
+
+/* 狗图片样式，宽度为视口宽度的40%，相对定位，位于第一屏内 */
+.dog-image {
+    width: 40vw;
+    height: auto;
+    max-width: 80%;
+    position: relative;
+    top: 30vh;
+    left: 0vw;
+    z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.header {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.1;
+    color: black;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    color: #6bbcf6;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.sign-in {
+    border: 1px solid gray;
+    color: #6bbcf6;
+}
+
+.menu-btn {
+    color: #333;
+}
+
+
+
+

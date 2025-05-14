@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空白页面</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: transparent;
+            transform: scale(0.5);
+            transform-origin: top left;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .cans-container {
+            display: flex;
+            gap: 40px;
+        }
+        .dog-container {
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="cans-container">
+        <div style="position: relative; width: fit-content; cursor: pointer;" onclick="toggleImage()">
+            <img id="img1" src="狗子网页素材/蓝罐头新.png" style="position: absolute; top: 0; left: 0;">
+            <img id="img2" src="狗子网页素材/蓝罐头开.png" style="position: absolute; top: 0; left: 0; display: none;">
+        </div>
+
+        <div style="position: relative; width: fit-content; cursor: pointer;" onclick="toggleImageRed()">
+            <img id="red1" src="狗子网页素材/红罐头新.png" style="position: absolute; top: 0; left: 500px;">
+            <img id="red2" src="狗子网页素材/红罐头开.png" style="position: absolute; top: 0; left: 500px; display: none;">
+        </div>
+
+        <div style="position: relative; width: fit-content; cursor: pointer;" onclick="toggleImageYellow()">
+            <img id="yellow1" src="狗子网页素材/黄罐头新.png" style="position: absolute; top: -110px; left: 1000px;">
+            <img id="yellow2" src="狗子网页素材/黄罐头开.png" style="position: absolute; top: -110px; left: 1000px; display: none;">
+        </div>
+    </div>
+    
+   
+</div>
+</body>
+<script>
+    function toggleImage() {
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+        const isImg1Visible = img1.style.display !== 'none';
+
+        img1.style.display = isImg1Visible ? 'none' : 'block';
+        img2.style.display = isImg1Visible ? 'block' : 'none';
+    }
+
+    function toggleImageRed() {
+        const img1 = document.getElementById('red1');
+        const img2 = document.getElementById('red2');
+        const isImg1Visible = img1.style.display !== 'none';
+
+        img1.style.display = isImg1Visible ? 'none' : 'block';
+        img2.style.display = isImg1Visible ? 'block' : 'none';
+    }
+
+    function toggleImageYellow() {
+        const img1 = document.getElementById('yellow1');
+        const img2 = document.getElementById('yellow2');
+        const isImg1Visible = img1.style.display !== 'none';
+
+        img1.style.display = isImg1Visible ? 'none' : 'block';
+        img2.style.display = isImg1Visible ? 'block' : 'none';
+    }
+</script>
+</html>

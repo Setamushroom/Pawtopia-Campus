@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>全屏狗狗拼图</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script>
+  let layers = {};
+  let layerNames = [
+    'body.png',
+    'face.png',
+    'ear.png',
+    'fur.png',
+    'eyelash.png',
+    'eye.png',
+    'nose.png',
+    'mouth.png'
+  ];
+
+  let imgWidth = 0;
+  let imgHeight = 0;
+
+  function preload() {
+    for (let name of layerNames) {
+      layers[name] = loadImage(name);
+    }
+  }
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noLoop();
+
+    // 获取任意一张图片作为尺寸参考
+    let ref = layers[layerNames[0]];
+    imgWidth = ref.width;
+    imgHeight = ref.height;
+  }
+
+  function draw() {
+    background(255);
+
+    let x = (width - imgWidth) / 2;
+    let y = (height - imgHeight) / 2;
+
+    for (let name of layerNames) {
+      if (layers[name]) {
+        image(layers[name], x, y);
+      }
+    }
+  }
+
+  // 自适应窗口大小
+  function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    redraw();
+  }
+</script>
+</body>
+</html>

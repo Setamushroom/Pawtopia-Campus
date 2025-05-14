@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      function toggleFrame(id) {
+        const frame = document.getElementById(id);
+        frame.style.display = frame.style.display === 'block' ? 'none' : 'block';
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <title>Paw Homestay</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 40px;
+        font-family: "passion one", sans-serif;
+        background-color: #ffeef2;
+        color: #3d2b1f;
+        overflow-x: hidden; /* 防止横向滚动条 */
+      }
+
+      .pg {
+        position: absolute;
+        bottom: 0vh;
+        left: 0px;
+        width: 40vw;
+        height: auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+      }
+
+      h1 {
+        font-size: 60px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      /* 修改文字尺寸和位置 */
+      .intro {
+      font-size: 30px;  /* 调整文字大小 */
+      font-weight: bold;
+      margin-bottom: 30px;
+      position: relative;
+      left: -80px;  /* 调整文字位置，使其向左偏移 */
+      width: 800px; /* 设置宽度来限制文本区域 */
+     text-align: justify;  /* 使文字两端对齐 */
+      }
+
+      .section {
+        display: inline-block;
+        vertical-align: top;
+        margin: 20px;
+        position: relative;
+      }
+
+      .schedule {
+        border: 4px dashed #b94747;
+        border-radius: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        position: fixed;
+        left: 200px;
+        bottom: 40px;
+        z-index: 20;
+        font-size: 25px;
+      }
+
+      .schedule h2 {
+        margin-top: 0;
+      }
+
+      /* 悬浮动画 keyframes */
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(7deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(7deg);
+        }
+        100% {
+          transform: translateY(0) rotate(7deg);
+        }
+      }
+
+      @keyframes float-assurance {
+        0% {
+          transform: translateY(0) rotate(-4deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(-4deg);
+        }
+        100% {
+          transform: translateY(0) rotate(-4deg);
+        }
+      }
+
+      .book-now {
+        position: fixed;
+        left: 900px;
+        bottom: 300px;
+        display: inline-block;
+        cursor: pointer;
+        z-index: 30;
+      }
+
+      /* 悬浮点击动画 */
+      @keyframes bounce {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .bouncy:hover {
+        animation: bounce 0.3s ease;
+      }
+
+      /* 对 iframe 调整 */
+      iframe {
+        position: fixed;
+        top: 20vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 600px;
+        border: none;
+        z-index: 999;
+        display: none;
+      }
+
+      /* 云朵的动画 */
+      .clouds img {
+        position: absolute;
+        z-index: 5;
+        width: 200px;
+        animation: float 4s infinite ease-in-out;
+      }
+
+      .cloud4 {
+        top: 50px;
+        left: 100px;
+      }
+
+      .cloud5 {
+        top: 120px;
+        right: 80px;
+      }
+
+      .cloud6 {
+        top: 300px;
+        left: 50px;
+      }
+
+      .cloud7 {
+        top: 400px;
+        right: 150px;
+      }
+
+      /* 按钮样式 */
+      .more-button {
+        margin-top: 40px;
+        padding: 15px 40px;
+        font-size: 20px;
+        background-color: #ffffff;
+        color: #5bc0ff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 20;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="狗子网页素材/爪子.png" style="position: fixed; top: 0; left: 0; width: 300px; z-index: 10;" alt="左上角爪子" />
+    <img src="狗子网页素材/屁股.png" class="pg" />
+    <div class="container">
+      <h1>Paw Homestay</h1>
+      <div class="intro">
+        Where comfort meets tail-wagging adventures! Our certified caregivers<br />
+        provide a home-like environment filled with engaging activities and 24/7<br />
+        supervision, ensuring your pet enjoys their stay while you travel<br />worry-free.
+      </div>
+
+      <div class="section schedule">
+        <h2>Dog Daily Schedule</h2>
+        <p><strong>8:00 AM:</strong> Sunrise walk</p>
+        <p><strong>9:30 AM:</strong> Enrichment games</p>
+        <p><strong>2:00 PM:</strong> Socialization hour</p>
+        <p><strong>7:00 PM:</strong> Cuddle time with bedtime stories</p>
+      </div>
+
+      <img src="狗子网页素材/线条.png" style="position: fixed; left: 700px; bottom: 250px; width: 180px;" alt="装饰线条" />
+
+      <div class="book-now">
+        <button onclick="toggleFrame('book-frame')" style="background: none; border: none; padding: 0; cursor: pointer;">
+          <img src="狗子网页素材/button.png"
+               style="width: 180px; border: none; transition: transform 0.3s ease;"
+               onmouseover="this.style.transform='scale(1.1)'"
+               onmouseout="this.style.transform='scale(1)'"
+               alt="Book Now" />
+        </button>
+      </div>
+
+      <div class="section features"></div>
+      <div class="section assurance"></div>
+      <img src="狗子网页素材/黄卡片.png" alt="黄卡片" class="bouncy"
+      style="position: absolute; right: -200px; top: 100px; width: 500px; height: auto;" />
+      <img src="狗子网页素材/蓝卡片.png" alt="蓝卡片" class="bouncy"
+      style="position: absolute; right: -200px; top: 400px; width: 500px; height: auto;" />
+ 
+    </div>
+
+    <!-- Book Now iframe -->
+    <iframe id="book-frame" src="book.html"></iframe>
+  </body>
+</html>
+
